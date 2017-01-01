@@ -1,5 +1,5 @@
 CONFIG += c++11
-CONFIG += app_bundle
+CONFIG += link_prl
 
 DEFINES += RISIP_SDK \
            PJ_IS_LITTLE_ENDIAN=1 \
@@ -20,6 +20,7 @@ INCLUDEPATH += $$PWD/src/risipsdk/headers
 
 macx {
 include(platforms/macos/macplatform.pri)
+CONFIG += app_bundle
 
 LIBS += -L$$PWD/platforms/macos/bin \
         -lrisip
@@ -41,6 +42,7 @@ LIBS += -L$$PWD/platforms/android-platform/bin \
 
 linux {
 include(platforms/linux/linuxplatform.pri)
+#INCLUDEPATH += $$PWD/pjsip/include
 
 LIBS += -L$$PWD/platforms/linux/bin \
         -lrisip

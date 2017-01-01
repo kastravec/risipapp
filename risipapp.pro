@@ -24,7 +24,7 @@ TEMPLATE = app
 TARGET = RisipApp
 DESTDIR = $$PWD/bin
 
-CONFIG += app_bundle
+CONFIG += static
 
 SOURCES += src/main.cpp
 
