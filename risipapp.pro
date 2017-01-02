@@ -24,8 +24,6 @@ TEMPLATE = app
 TARGET = RisipApp
 DESTDIR = $$PWD/bin
 
-CONFIG += static
-
 SOURCES += src/main.cpp
 
 RESOURCES += qml.qrc \

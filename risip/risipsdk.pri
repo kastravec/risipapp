@@ -42,7 +42,6 @@ LIBS += -L$$PWD/platforms/android-platform/bin \
 
 linux {
 include(platforms/linux/linuxplatform.pri)
-#INCLUDEPATH += $$PWD/pjsip/include
 
 LIBS += -L$$PWD/platforms/linux/bin \
         -lrisip
