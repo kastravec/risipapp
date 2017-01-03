@@ -24,7 +24,8 @@ TEMPLATE = app
 TARGET = RisipApp
 DESTDIR = $$PWD/bin
 
-SOURCES += src/main.cpp
+SOURCES += src/main.cpp \
+    src/risipuiloader.cpp
 
 RESOURCES += qml.qrc \
              images.qrc
@@ -33,3 +34,6 @@ RESOURCES += qml.qrc \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+HEADERS += \
+    src/risipuiloader.h
