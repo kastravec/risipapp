@@ -39,8 +39,19 @@ Item {
     property RisipAccount sipAccount: Risip.defaultAccount
     property RisipEndpoint sipEndpoint: Risip.sipEndpoint
 
-    Component.onCompleted: { sipEndpoint.start(); }
-    Component.onDestruction: { sipEndpoint.stop(); }
+    Component.onCompleted: {
+        sipEndpoint.start();
+
+        //reading settings - TODO can be done at any point
+        Risip.readSettings();
+    }
+
+    Component.onDestruction: {
+        sipEndpoint.stop();
+
+        //writing settings locally - TODO can be done at any point
+        Risip.saveSettings();
+    }
 
     Loader {
         id: splashScreenLoader

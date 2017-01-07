@@ -16,7 +16,12 @@ QT = gui \
      positioning \
      location
 
-INCLUDEPATH += $$PWD/src/risipsdk/headers
+INCLUDEPATH += $$PWD/src/risipsdk/headers \
+               $$PWD/src/risipsdk/headers/models \
+               $$PWD/src/risipsdk/headers/apploader \
+               $$PWD/src/risipsdk/headers/location \
+               $$PWD/src/risipsdk/headers/sipprovision \
+               $$PWD/src/risipsdk/headers/utils
 
 macx {
 include(platforms/macos/macplatform.pri)
