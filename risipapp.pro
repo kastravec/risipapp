@@ -18,7 +18,7 @@
 #
 ###################################################################################
 
-include(risip-voipsdk/src/risip-voipsdk.pri)
+include(risip-voipsdk/risip-voipsdk.pri)
 
 TEMPLATE = app
 TARGET = RisipApp
@@ -33,5 +33,3 @@ RESOURCES += qml.qrc \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
-
-HEADERS +=
