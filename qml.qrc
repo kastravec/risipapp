@@ -45,5 +45,7 @@
         <file>ui/base/TechnicalProblemPage.qml</file>
         <file>ui/base/TechnicalProblemPageForm.qml</file>
         <file>ui/base/WelcomeScreen.qml</file>
+        <file>ui/base/PermissionWizard.qml</file>
+        <file>ui/base/PermissionWizzardForm.qml</file>
     </qresource>
 </RCC>
