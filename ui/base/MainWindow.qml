@@ -81,8 +81,8 @@ ApplicationWindow {
     }
 
     RisipBuddy {
-        id: petiBuddy
-        contact: "toptop"
+        id: risip1Buddy
+        contact: "risip1"
     }
 
     Connections {
@@ -132,8 +132,8 @@ ApplicationWindow {
             if(sipAccount.status === RisipAccount.SignedIn) {
                 loginPageLoader.active = false;
                 mainPageLoader.item.visible = true;
-                sipAccount.addBuddy(petiBuddy);
-                petiBuddy.sendInstantMessage("koooott");
+                sipAccount.addBuddy(risip1Buddy);
+                risip1Buddy.sendInstantMessage("koooott");
             } else if(Risip.defaultAccount.status === RisipAccount.SignedOut) {
                 loginPageLoader.active = true;
                 mainPageLoader.item.visible = false;
@@ -142,7 +142,7 @@ ApplicationWindow {
 
         onIncomingMessage: {
             var msg = message;
-            console.log(msg.messageBody);
+            console.log("INSTANT MESSAGE INCOMING: " + msg.messageBody);
         }
     }
 }

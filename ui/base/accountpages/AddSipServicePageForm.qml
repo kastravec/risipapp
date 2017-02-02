@@ -35,36 +35,45 @@ Page {
     signal cancelClicked
     signal saveClicked
 
-    header: Item {
+    header: ToolBar {
         focus: true
 
-        Row {
-            id: rowLayout
-            spacing: 2
+        background: Rectangle {
+            implicitHeight: 40
+            color: "#ffffff"
+        }
 
-            Arrow {
-                orientation: "left"
-                Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter;
-            }
+        Arrow {
+            id: backArrowIcon
+            orientation: "left"
+            anchors.left: parent.left
+            anchors.leftMargin: 10
+            anchors.verticalCenter: parent.verticalCenter
+        }
 
-            Label {
-                text: qsTr("Cancel")
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: root.cancelClicked();
-                }
+        ToolButton {
+            text: qsTr("Cancel")
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.left: backArrowIcon.right
+            anchors.rightMargin: 10
+            onClicked:root.cancelClicked();
+
+            background: Rectangle {
+                color: "#ffffff"
             }
         }
 
-        Label {
+        ToolButton {
             text: qsTr("Save")
+            anchors.verticalCenter: parent.verticalCenter
             anchors.right: parent.right
             anchors.rightMargin: 5
 
-            MouseArea {
-                anchors.fill: parent
-                onClicked: root.saveClicked();
+            background: Rectangle {
+                color: "#ffffff"
             }
+
+            onClicked: root.saveClicked();
         }
 
     }

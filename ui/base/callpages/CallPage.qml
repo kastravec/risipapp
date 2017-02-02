@@ -49,20 +49,16 @@ CallPageForm {
         target: RisipCallManager
 
         onIncomingCall: {
-            //first hangup if any call is active
-            if(callPage.activeCall)
-                callPage.activeCall.hangup();
-
             callPage.activeCall = call;
             callPage.state = "incoming";
-            callPage.visible = true;
+            callStatusChangeHandler(callPage.activeCall.status)
             callPage.usernameLabel.text = callPage.activeCall.buddy.contact
         }
 
         onOutgoingCall: {
             callPage.activeCall = call;
             callPage.state = "outgoing"
-            callPage.visible = true;
+            callStatusChangeHandler(callPage.activeCall.status);
             callPage.usernameLabel.text = callPage.activeCall.buddy.contact
         }
     }
@@ -75,38 +71,47 @@ CallPageForm {
             statusLabel.text = "...";
             callPage.visible = false;
         }
+        onStatusChanged: { callStatusChangeHandler(activeCall.status) }
+    }
 
-        onStatusChanged: {
-            switch (activeCall.status) {
-            case RisipCall.CallConfirmed:
-                statusLabel.text = "Connected!";
-                callPage.state = "incall";
-                callPage.visible = true;
-                stopWatch.start();
-                break;
-            case RisipCall.CallDisconnected:
-                statusLabel.text = "Disconnected";
-                callPage.visible = false;
-                stopWatch.stop();
-                break;
-            case RisipCall.CallEarly:
-                statusLabel.text = "Ringing..";
-                break;
-            case RisipCall.ConnectingToCall:
-                statusLabel.text = "Connecting..";
-                break;
-            case RisipCall.IncomingCallStarted:
-                statusLabel.text = "Incoming call!"
-                break;
-            case RisipCall.OutgoingCallStarted:
-                statusLabel.text = "Calling.."
-                break;
-            case RisipCall.Null:
-                statusLabel.text = "...";
-                callPage.visible = false;
-                stopWatch.stop();
-                break;
-            }
+    function callStatusChangeHandler(status) {
+        console.log("CALL STATUS: " + status);
+
+        switch (status) {
+        case RisipCall.CallConfirmed:
+            statusLabel.text = "Connected!";
+            callPage.state = "incall";
+            callPage.visible = true;
+            stopWatch.start();
+            break;
+        case RisipCall.CallDisconnected:
+            statusLabel.text = "Disconnected";
+            callPage.visible = false;
+            stopWatch.reset();
+            stopWatch.stop();
+            break;
+        case RisipCall.CallEarly:
+            statusLabel.text = "Ringing..";
+            callPage.visible = true;
+            break;
+        case RisipCall.ConnectingToCall:
+            statusLabel.text = "Connecting..";
+            callPage.visible = true;
+            break;
+        case RisipCall.IncomingCallStarted:
+            statusLabel.text = "Incoming call!"
+            callPage.visible = true;
+            break;
+        case RisipCall.OutgoingCallStarted:
+            statusLabel.text = "Calling.."
+            callPage.visible = true;
+            break;
+        case RisipCall.Null:
+            statusLabel.text = "...";
+            callPage.visible = false;
+            stopWatch.reset();
+            stopWatch.stop();
+            break;
         }
     }
 }
