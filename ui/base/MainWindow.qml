@@ -81,8 +81,11 @@ ApplicationWindow {
     }
 
     RisipBuddy {
-        id: risip1Buddy
-        contact: "risip1"
+        id: risip2Buddy
+        contact: "risip2"
+        onPresenceChanged: {
+            console.log("BUDDY PRESENCE: " + presence)
+        }
     }
 
     Connections {
@@ -132,8 +135,9 @@ ApplicationWindow {
             if(sipAccount.status === RisipAccount.SignedIn) {
                 loginPageLoader.active = false;
                 mainPageLoader.item.visible = true;
-                sipAccount.addBuddy(risip1Buddy);
-                risip1Buddy.sendInstantMessage("koooott");
+                sipAccount.addRisipBuddy(risip2Buddy);
+                console.log("ADDING BUDDY : " + risip2Buddy.uri)
+                risip2Buddy.sendInstantMessage("koooott");
             } else if(Risip.defaultAccount.status === RisipAccount.SignedOut) {
                 loginPageLoader.active = true;
                 mainPageLoader.item.visible = false;

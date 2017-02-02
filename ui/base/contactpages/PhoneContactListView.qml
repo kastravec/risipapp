@@ -36,7 +36,7 @@ Page {
         sourceModel: RisipContactManager.phoneContactsModel
         filterRoleName: "fullName" //from model
         filterCaseSensitivity: Qt.CaseInsensitive
-        sortOrder: Qt.AscendingOrder
+        ascendingSortOrder: true
         sortRoleName: "fullName" //from model
     }
 

@@ -45,10 +45,10 @@ Page {
     property string uiBasePath: "qrc:/ui/base/"
     property RisipAccount sipAccount: Risip.defaultAccount
 
-    RisipCall {
-        id: calling
+    Component.onCompleted: {
+        Risip.accessPhoneContacts();
+        Risip.accessPhoneMedia();
     }
-
 
     header: MainToolBar { id: mainToolBar }
     footer: MainTabBar { id: mainTabBar }

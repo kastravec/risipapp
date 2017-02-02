@@ -36,7 +36,7 @@ Page {
         sourceModel: RisipRateManager.countryRatesModel
         filterRoleName: "countryName"
         filterCaseSensitivity: Qt.CaseInsensitive
-        sortOrder: Qt.AscendingOrder
+        ascendingSortOrder: true
         sortRoleName: "countryName"
         filterPattern: countrySearchBox.text
     }
