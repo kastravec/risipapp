@@ -73,7 +73,6 @@ Page {
                     Layout.alignment: Qt.AlignHCenter
                     Layout.fillWidth: true
                     placeholderText: qsTr("Username")
-                    verticalBottomLine: true
                 }
 
                 LineEdit {
@@ -83,7 +82,6 @@ Page {
                     Layout.alignment: Qt.AlignHCenter
                     Layout.fillWidth: true
                     echoMode: TextInput.Password
-                    verticalBottomLine: true
                     placeholderText: qsTr("Password")
                 }
             }

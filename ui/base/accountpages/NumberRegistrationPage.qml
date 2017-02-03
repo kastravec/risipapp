@@ -70,7 +70,7 @@ Page {
 
                 MouseArea {
                     anchors.fill: parent
-                    anchors.margins: 20
+                    anchors.margins: -10
                     onClicked: { countryPickerPopup.visible = true; }
                 }
             }

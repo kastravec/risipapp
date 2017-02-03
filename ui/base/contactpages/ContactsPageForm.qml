@@ -61,7 +61,7 @@ Page {
 
                 LineEdit {
                     id: searchContactInput
-                    height: 40
+                    height: 80
                     Layout.fillHeight: false
                     Layout.fillWidth: true
                     showMagnifyIcon: true

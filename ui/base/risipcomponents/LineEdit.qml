@@ -24,26 +24,23 @@ import QtQuick.Layouts 1.3
 
 Rectangle {
     id: root
-    width: 100
+    width: 200
+    height: 100
 
     property alias textInput: textInput
     property alias text: textInput.text
-    property alias placeholderText: placeHolder.text
+    property alias placeholderText: textInput.placeholderText
     property alias showMagnifyIcon: searchIcon.visible
-    property int frameBorder: 1
+    property int frameBorder: 0
     property alias font: textInput.font
     property alias echoMode: textInput.echoMode
     property alias horizontalAlignment: textInput.horizontalAlignment
-    property alias verticalBottomLine: verticalLine.visible
 
     Rectangle {
         id: frame
         border.width: frameBorder
-        width: parent.width - 20
-        height: parent.height - 5
-        anchors.centerIn: parent
-
-        Line { id: verticalLine; anchors.top: parent.bottom; }
+        anchors.fill: parent
+        anchors.margins: 15
 
         Image {
             id: searchIcon
@@ -56,7 +53,7 @@ Rectangle {
             anchors.verticalCenter: parent.verticalCenter
         }
 
-        TextInput {
+        TextField {
             id: textInput
             anchors.left: searchIcon.right
             anchors.leftMargin: 10
@@ -65,27 +62,11 @@ Rectangle {
             anchors.verticalCenter: parent.verticalCenter
             clip: true
 
-            Text {
-                id: placeHolder
-                opacity: 0.5
-                anchors.centerIn: textInput
-
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: textInput.forceActiveFocus();
-                }
-            }
-
-            onActiveFocusChanged: {
-                if(textInput.activeFocus)
-                    placeHolder.visible = false;
-            }
-
             onTextChanged: {
                 if(text.length > 0)
-                    root.state = "base"; //placeHolder.visible = false;
+                    root.state = "base";
                 else
-                    root.state = "active"; //placeHolder.visible = true;
+                    root.state = "active";
             }
         }
 
@@ -98,14 +79,17 @@ Rectangle {
             anchors.right: parent.right
             anchors.rightMargin: 10
             visible: false
+
             MouseArea {
+                id: mousearea
                 anchors.fill: parent
-                anchors.margins: 20
+                anchors.margins: -10
                 onClicked: textInput.remove(textInput.length -1, textInput.length);
                 onPressAndHold: textInput.clear();
             }
         }
     }
+
     states: [
         State {
             name: "active"
@@ -113,11 +97,6 @@ Rectangle {
             PropertyChanges {
                 target: frame
                 border.color: "#db0000"
-            }
-
-            PropertyChanges {
-                target: placeHolder
-                visible: false
             }
 
             PropertyChanges {

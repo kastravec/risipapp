@@ -24,6 +24,9 @@ TEMPLATE = app
 TARGET = RisipApp
 DESTDIR = $$PWD/bin
 
+QT += androidextras
+ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
+
 SOURCES += src/main.cpp
 
 RESOURCES += qml.qrc \
@@ -33,3 +36,26 @@ RESOURCES += qml.qrc \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+DISTFILES += \
+    risip-voipsdk/platforms/AndroidManifest.xml \
+    risip-voipsdk/platforms/gradle/wrapper/gradle-wrapper.jar \
+    risip-voipsdk/platforms/gradlew \
+    risip-voipsdk/platforms/res/values/libs.xml \
+    risip-voipsdk/platforms/build.gradle \
+    risip-voipsdk/platforms/gradle/wrapper/gradle-wrapper.properties \
+    risip-voipsdk/platforms/gradlew.bat \
+    risip-voipsdk/platforms/android-platform/android/AndroidManifest.xml \
+    risip-voipsdk/platforms/android-platform/android/gradle/wrapper/gradle-wrapper.jar \
+    risip-voipsdk/platforms/android-platform/android/gradlew \
+    risip-voipsdk/platforms/android-platform/android/res/values/libs.xml \
+    risip-voipsdk/platforms/android-platform/android/build.gradle \
+    risip-voipsdk/platforms/android-platform/android/gradle/wrapper/gradle-wrapper.properties \
+    risip-voipsdk/platforms/android-platform/android/gradlew.bat \
+    android/AndroidManifest.xml \
+    android/gradle/wrapper/gradle-wrapper.jar \
+    android/gradlew \
+    android/res/values/libs.xml \
+    android/build.gradle \
+    android/gradle/wrapper/gradle-wrapper.properties \
+    android/gradlew.bat

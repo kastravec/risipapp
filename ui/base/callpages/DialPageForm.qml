@@ -40,7 +40,6 @@ Page {
         Layout.preferredHeight: 40
         frameBorder: 0
         font.pointSize: 32
-        verticalBottomLine: true
     }
 
     GridLayout {
