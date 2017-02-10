@@ -1,6 +1,6 @@
 # README #
 
-RisipApp is a VoIP app developed solely in QML, based on the Risip VoIP SDK.
+RisipApp is a VoIP app developed solely in QML, based on the [Risip SDK - https://github.com/psaraci/risip](https://github.com/psaraci/risip).
 
 It is a cross-platform app and runs on all Desktop (Windows, Mac, Linux) and on mobile platforms such as iOS and Android.
 
