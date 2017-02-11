@@ -72,35 +72,11 @@ ApplicationWindow {
         anchors.fill: parent
     }
 
-    Loader {
-        id: accountRegistrationLoader
-        source: uiBasePath + "/accountpages/" + "UserRegistration.qml";
-        active: false
-        asynchronous: true
-        anchors.fill: parent
-    }
-
     RisipBuddy {
         id: risip2Buddy
         contact: "risip2"
         onPresenceChanged: {
             console.log("BUDDY PRESENCE: " + presence)
-        }
-    }
-
-    Connections {
-        target: accountRegistrationLoader.item
-
-        onAccountRegistered: {
-            if(sipAccount.status === RisipAccount.SignedIn) {
-                loginPageLoader.active = false;
-                mainPageLoader.item.visible = true;
-            } else {
-                loginPageLoader.active = true;
-                mainPageLoader.item.visible = false;
-            }
-
-            accountRegistrationLoader.active = false;
         }
     }
 
@@ -115,8 +91,6 @@ ApplicationWindow {
                 mainPageLoader.item.visible = true;
             } else {
                 if(firstRun)
-                    accountRegistrationLoader.active = true;
-                else
                     loginPageLoader.active = true;
 
                 mainPageLoader.item.visible = false; //main page is not visible because account is not signed int

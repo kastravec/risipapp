@@ -107,15 +107,9 @@ Page {
                 spacing: 15
 
                 RisipButton {
-                    id: registerButton
-                    Layout.fillWidth: true
-                    text: qsTr("Register your free account")
-                }
-
-                RisipButton {
                     id: addSipServiceButton
                     Layout.fillWidth: true
-                    text: qsTr("Add SIP Service")
+                    text: qsTr("Add SIP Account")
                 }
             }
         }

@@ -5,10 +5,6 @@
         <file>ui/base/accountpages/AddSipServicePageForm.qml</file>
         <file>ui/base/accountpages/LoginPage.qml</file>
         <file>ui/base/accountpages/LoginPageForm.qml</file>
-        <file>ui/base/accountpages/NumberRegistrationPage.qml</file>
-        <file>ui/base/accountpages/ProfileRegistrationPage.qml</file>
-        <file>ui/base/accountpages/UserRegistration.qml</file>
-        <file>ui/base/accountpages/UserRegistrationForm.qml</file>
         <file>ui/base/callpages/CallHistoryListView.qml</file>
         <file>ui/base/callpages/CallHistoryListViewDelegate.qml</file>
         <file>ui/base/callpages/CallPage.qml</file>

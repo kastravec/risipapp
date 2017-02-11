@@ -24,8 +24,9 @@ TEMPLATE = app
 TARGET = RisipApp
 DESTDIR = $$PWD/bin
 
+android {
 QT += androidextras
-ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
+}
 
 SOURCES += src/main.cpp
 
