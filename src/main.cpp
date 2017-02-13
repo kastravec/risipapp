@@ -28,15 +28,15 @@ int main(int argc, char *argv[])
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QGuiApplication app(argc, argv);
 
-    RisipApplicationSettings::instance()->setOrganizationName(QString("risipapp"));
-    RisipApplicationSettings::instance()->setApplicationName(QString("risipapp"));
-    RisipApplicationSettings::instance()->setOrganizationDomain(QString("http://risip.io"));
+    risip::RisipApplicationSettings::instance()->setOrganizationName(QString("risipapp"));
+    risip::RisipApplicationSettings::instance()->setApplicationName(QString("risipapp"));
+    risip::RisipApplicationSettings::instance()->setOrganizationDomain(QString("http://risip.io"));
 
     //risi wrapper object - registering the c++ classes to the QML engine
-    Risip::registerToQml();
+    risip::Risip::registerToQml();
 
     //the ui loader resolves which ui to be loaded for the platform/operating sytem
-    RisipUiLoader ui;
+    risip::RisipUiLoader ui;
     ui.setQmlFile("qrc:/ui/base/Main.qml");
     ui.start();
 
