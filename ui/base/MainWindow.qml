@@ -35,15 +35,15 @@ ApplicationWindow {
     property RisipAccount sipAccount: Risip.defaultAccount
 
     Component.onCompleted: {
-        if(firstRun) {
-            welcomeScreenLoader.active = true;
+        if (firstRun) {
+            welcomeScreenLoader.active = true
         } else {
-            if(sipAccount.status === RisipAccount.SignedIn) {
-                loginPageLoader.active = false;
-                mainPageLoader.visible = true;
+            if (sipAccount.status === RisipAccount.SignedIn) {
+                loginPageLoader.active = false
+                mainPageLoader.visible = true
             } else {
-                loginPageLoader.active = true;
-                mainPageLoader.visible = false;
+                loginPageLoader.active = true
+                mainPageLoader.visible = false
             }
         }
     }
@@ -86,17 +86,21 @@ ApplicationWindow {
     Connections {
         target: welcomeScreenLoader.item
         onEnterClicked: {
-            if(sipAccount.status === RisipAccount.SignedIn) {
-                loginPageLoader.active = false;
-                mainPageLoader.item.visible = true;
+            if (!firstRun) {
+                if (sipAccount.status === RisipAccount.SignedIn) {
+                    loginPageLoader.active = false
+                    mainPageLoader.item.visible = true
+                } else {
+                    mainPageLoader.item.visible
+                            = false //main page is not visible because account is not signed int
+                }
+                welcomeScreenLoader.active = false //disabling welcome screen on enter clicked
             } else {
-                if(firstRun)
-                    loginPageLoader.active = true;
-
-                mainPageLoader.item.visible = false; //main page is not visible because account is not signed int
+                loginPageLoader.active = true
+                mainPageLoader.item.visible
+                        = false //main page is not visible because account is not signed int
+                welcomeScreenLoader.active = false //disabling welcome screen on enter clicked
             }
-
-            welcomeScreenLoader.active = false; //disabling welcome screen on enter clicked
         }
     }
 
@@ -106,21 +110,21 @@ ApplicationWindow {
 
         //handle signed in/out and errors
         onStatusChanged: {
-            if(sipAccount.status === RisipAccount.SignedIn) {
-                loginPageLoader.active = false;
-                mainPageLoader.item.visible = true;
-                sipAccount.addRisipBuddy(risip2Buddy);
+            if (sipAccount.status === RisipAccount.SignedIn) {
+                loginPageLoader.active = false
+                mainPageLoader.item.visible = true
+                sipAccount.addRisipBuddy(risip2Buddy)
                 console.log("ADDING BUDDY : " + risip2Buddy.uri)
-                risip2Buddy.sendInstantMessage("koooott");
-            } else if(Risip.defaultAccount.status === RisipAccount.SignedOut) {
-                loginPageLoader.active = true;
-                mainPageLoader.item.visible = false;
+                risip2Buddy.sendInstantMessage("koooott")
+            } else if (Risip.defaultAccount.status === RisipAccount.SignedOut) {
+                loginPageLoader.active = true
+                mainPageLoader.item.visible = false
             }
         }
 
         onIncomingMessage: {
-            var msg = message;
-            console.log("INSTANT MESSAGE INCOMING: " + msg.messageBody);
+            var msg = message
+            console.log("INSTANT MESSAGE INCOMING: " + msg.messageBody)
         }
     }
 }
