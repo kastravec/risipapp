@@ -1,3 +1,4 @@
+
 /***********************************************************************************
 **    Copyright (C) 2016  Petref Saraci
 **    http://risip.io
@@ -16,7 +17,6 @@
 **    A copy of the license can be found also here <http://www.gnu.org/licenses/>.
 **
 ************************************************************************************/
-
 import QtQuick 2.7
 import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.3
@@ -52,7 +52,7 @@ Page {
         delegate: contactListViewDelegate
     }
 
-    //delegate
+    //list item delegate
     Component {
         id: contactListViewDelegate
         Rectangle {
@@ -62,9 +62,9 @@ Page {
 
             MouseArea {
                 anchors.fill: parent
-                onClicked:{
-                    RisipContactManager.setActivePhoneContact(fullName);
-                    phoneContactsPageView.contactClicked();
+                onClicked: {
+                    RisipContactManager.setActivePhoneContact(fullName)
+                    phoneContactsPageView.contactClicked()
                 }
             }
 
@@ -95,8 +95,8 @@ Page {
                 width: 45
                 height: 45
                 anchors.centerIn: contactIconBox
-                source: "image://contactIcon/" + fullName; //from model
-                visible: false;
+                source: "image://contactIcon/" + fullName //from model
+                visible: false
             }
 
             Rectangle {

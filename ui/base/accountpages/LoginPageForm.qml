@@ -20,7 +20,6 @@ import QtQuick 2.7
 import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.3
 import QtQuick.Window 2.2
-import QtQuick.Controls.Material 2.0
 
 import "../risipcomponents"
 
@@ -30,16 +29,10 @@ Page {
     width: 720
     height: 1280
 
-    Material.theme: Material.Light
-    Material.background: "#FFFFFF"
-    Material.accent: "#db0000" //"#DB5AB9"
-    Material.foreground: "#000000"
-    Material.primary: "#FFFFFF"
-
     property alias loginButton: loginButton
-    property alias addSipServiceButton: addSipServiceButton
+    property alias allSipAccountsButton: allSipAccountsButton
     property alias uernameInput: uernameInput
-    property alias sipServicesInput: sipServicesInput
+    property alias sipAccountsCombobox: sipAccountsCombobox
     property alias passwordInput: passwordInput
     property alias stackView: stackView
 
@@ -50,7 +43,7 @@ Page {
 
         Pane {
             id: loginForm
-            width: parent.width *0.80
+            width: parent.width * 0.80
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.verticalCenter: parent.verticalCenter
 
@@ -61,7 +54,8 @@ Page {
                 anchors.horizontalCenter: parent.horizontalCenter
 
                 ComboBox {
-                    id: sipServicesInput
+                    id: sipAccountsCombobox
+                    textRole: "accountUri"
                     Layout.alignment: Qt.AlignHCenter
                     Layout.fillWidth: true
                 }
@@ -107,9 +101,9 @@ Page {
                 spacing: 15
 
                 RisipButton {
-                    id: addSipServiceButton
+                    id: allSipAccountsButton
                     Layout.fillWidth: true
-                    text: qsTr("Add SIP Account")
+                    text: qsTr("All SIP Accounts")
                 }
             }
         }

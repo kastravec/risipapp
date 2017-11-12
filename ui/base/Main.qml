@@ -1,3 +1,4 @@
+
 /***********************************************************************************
 **    Copyright (C) 2016  Petref Saraci
 **    http://risip.io
@@ -16,7 +17,6 @@
 **    A copy of the license can be found also here <http://www.gnu.org/licenses/>.
 **
 ************************************************************************************/
-
 import QtQuick 2.7
 import QtQuick.Window 2.2
 import QtQuick.Controls 2.0
@@ -40,17 +40,17 @@ Item {
     property RisipEndpoint sipEndpoint: Risip.sipEndpoint
 
     Component.onCompleted: {
-        sipEndpoint.start();
+        sipEndpoint.start()
 
         //reading settings - TODO can be done at any point
-        Risip.readSettings();
+        Risip.readSettings()
     }
 
     Component.onDestruction: {
-        sipEndpoint.stop();
+        sipEndpoint.stop()
 
         //writing settings locally - TODO can be done at any point
-        Risip.saveSettings();
+        Risip.saveSettings()
     }
 
     Loader {
@@ -59,13 +59,14 @@ Item {
         active: true
         width: root.width
         height: height.height
-        z:1
+        z: 1
     }
 
     Loader {
         id: mainWindowLoader
         active: true
         asynchronous: true
+        visible: false
         source: uiBasePath + "MainWindow.qml"
     }
 
@@ -73,8 +74,8 @@ Item {
     Connections {
         target: splashScreenLoader.item
         onTimeout: {
-            mainWindowLoader.item.visible = true;
-            splashScreenLoader.active = false;
+            mainWindowLoader.item.visible = true
+            splashScreenLoader.active = false
         }
     }
 
@@ -83,8 +84,8 @@ Item {
         target: sipEndpoint
 
         onStatusChanged: {
-            if(sipEndpoint.status === RisipEndpoint.Started)
-                console.log("RISIP Engine started!");
+            if (sipEndpoint.status === RisipEndpoint.Started)
+                console.log("RISIP Engine started!")
         }
     }
 }

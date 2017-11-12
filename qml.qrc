@@ -1,8 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>qtquickcontrols2.conf</file>
-        <file>ui/base/accountpages/AddSipServicePage.qml</file>
-        <file>ui/base/accountpages/AddSipServicePageForm.qml</file>
         <file>ui/base/accountpages/LoginPage.qml</file>
         <file>ui/base/accountpages/LoginPageForm.qml</file>
         <file>ui/base/callpages/CallHistoryListView.qml</file>
@@ -43,5 +41,9 @@
         <file>ui/base/WelcomeScreen.qml</file>
         <file>ui/base/PermissionWizard.qml</file>
         <file>ui/base/PermissionWizzardForm.qml</file>
+        <file>ui/base/accountpages/SipAccountsPageForm.qml</file>
+        <file>ui/base/accountpages/AddSipAccountPage.qml</file>
+        <file>ui/base/accountpages/AddSipAccountPageForm.qml</file>
+        <file>ui/base/accountpages/SipAccountsPage.qml</file>
     </qresource>
 </RCC>

@@ -17,18 +17,17 @@
 **    A copy of the license can be found also here <http://www.gnu.org/licenses/>.
 **
 ************************************************************************************/
-
 import QtQuick 2.7
 import Risip 1.0
 
-AddSipServicePageForm {
-    id:root
+AddSipAccountPageForm {
+    id: root
 
     signal sipAccountAdded
 
     onSaveClicked: {
-        Risip.createAccount(configuration);
-        root.sipAccountAdded();
+        Risip.createAccount(configuration)
+        root.sipAccountAdded()
     }
 
     RisipAccountConfiguration {
@@ -41,5 +40,4 @@ AddSipServicePageForm {
         randomLocalPort: parseInt(localPortInput.text)
         networkProtocol: networkTypeInput.currentIndex
     }
-
 }

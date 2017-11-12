@@ -16,49 +16,53 @@
 **    A copy of the license can be found also here <http://www.gnu.org/licenses/>.
 **
 ************************************************************************************/
-
 import QtQuick 2.7
+import QtQuick.Controls.Material 2.1
+
 import Risip 1.0
 
 LoginPageForm {
     id: root
-    sipServicesInput.model: Risip.accountNames
+
+    Material.theme: Material.Light
+    Material.background: "#FFFFFF"
+    Material.accent: "#db0000" //"#DB5AB9"
+    Material.foreground: "#000000"
+    Material.primary: "#FFFFFF"
+
+    sipAccountsCombobox.model: Risip.allAccountsModel
 
     property RisipAccount sipAccount: Risip.defaultAccount
     signal signedIn
 
-    sipServicesInput.onActivated: {
-        sipAccount = Risip.accountForUri(sipServicesInput.currentText);
+    sipAccountsCombobox.onActivated: {
+        sipAccount = Risip.accountForUri(sipAccountsCombobox.currentText)
         uernameInput.text = sipAccount.configuration.userName
         passwordInput.text = sipAccount.configuration.password
 
-        Risip.setDefaultAccount(sipAccount.configuration.uri);
+        Risip.setDefaultAccount(sipAccount.configuration.uri)
     }
 
-    addSipServiceButton.onClicked: {
-        addSipServicePageLoader.active = true;
-        stackView.push(addSipServicePageLoader.item)
+    allSipAccountsButton.onClicked: {
+        sipAccountsPageLoader.active = true
+        stackView.push(sipAccountsPageLoader.item)
     }
 
-    loginButton.onClicked: { sipAccount.login(); }
+    loginButton.onClicked: {
+        sipAccount.login()
+    }
 
     Loader {
-        id: addSipServicePageLoader
-        source: "qrc:/ui/base/accountpages/AddSipServicePage.qml"
+        id: sipAccountsPageLoader
+        source: "qrc:/ui/base/accountpages/SipAccountsPage.qml"
         active: false
     }
 
     Connections {
-        target: addSipServicePageLoader.item
-
+        target: sipAccountsPageLoader.item
         onCancelClicked: {
-            stackView.pop();
-            addSipServicePageLoader.active = false;
-        }
-
-        onSipAccountAdded: {
-            stackView.pop();
-            addSipServicePageLoader.active = false;
+            stackView.pop()
+            sipAccountsPageLoader.active = false
         }
     }
 }

@@ -72,14 +72,6 @@ ApplicationWindow {
         anchors.fill: parent
     }
 
-    RisipBuddy {
-        id: risip2Buddy
-        contact: "risip2"
-        onPresenceChanged: {
-            console.log("BUDDY PRESENCE: " + presence)
-        }
-    }
-
     //welcome screen singal handler, from which we go to either
     //the Login page or if autologin is enabled then directly to
     //the Home page.
@@ -113,9 +105,6 @@ ApplicationWindow {
             if (sipAccount.status === RisipAccount.SignedIn) {
                 loginPageLoader.active = false
                 mainPageLoader.item.visible = true
-                sipAccount.addRisipBuddy(risip2Buddy)
-                console.log("ADDING BUDDY : " + risip2Buddy.uri)
-                risip2Buddy.sendInstantMessage("koooott")
             } else if (Risip.defaultAccount.status === RisipAccount.SignedOut) {
                 loginPageLoader.active = true
                 mainPageLoader.item.visible = false
