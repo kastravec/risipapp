@@ -40,3 +40,9 @@ Supported platforms you can target and build RisipApp for, are the following:
 - Linux 64bit
 
 --------------------------------
+
+## Can I use it commercially ? ##
+
+Yes, it is possible to get a commercial license of risip. Drop me a message and I can help.
+
+
